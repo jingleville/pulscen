@@ -1,0 +1,43 @@
+<h1>New page</h1>
+
+<%= render "form", page: @page, path: add_root_path %>
+
+<%= form_with(model: @page, url:  add_root_path) do |form| %>
+  <%= path %>
+  <% if @page.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% @page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to pages", pages_path %>
+</div>

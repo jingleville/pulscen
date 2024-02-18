@@ -1,0 +1,20 @@
+  <style>
+   .page {
+    margin-left: 20px;
+   }
+  </style>
+
+
+
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Pages</h1>
+
+<div id="pages">
+  <% @root_pages.each do |page| %> 
+  <div>
+    <%= render page %>
+  </div>
+  <% end %>
+</div>

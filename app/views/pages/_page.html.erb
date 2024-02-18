@@ -1,0 +1,7 @@
+<div id="<%= dom_id page %>" class="page">
+  <%= link_to page.title, page.path %>
+
+  <% page.children.each do |page| %>
+    <%= render page %>
+  <% end %>
+</div>
