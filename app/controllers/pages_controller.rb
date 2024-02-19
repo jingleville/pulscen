@@ -7,8 +7,9 @@ class PagesController < ApplicationController
 
   def show
     @children = @page.children
-    @body = @page.body.sub(/(?<foo>(\**\*))/, '<b>\\k<foo></b>')
+    @body = @page.body.gsub(/\(\((?<path>[^\*]*)\)\)/, '<a href="[site]/\k<path>"></a>').gsub(/\s\[([^\*]*)\]\">/, '">\1').gsub(/\\([^\*]*)\\/, '<i>\1</i>').gsub(/\*([^\*]*)\*/, '<b>\1</b>')
   
+
 # "hello".sub(/[aeiou]/, '*')                  #=> "h*llo"
 # "hello".sub(/([aeiou])/, '<\1>')             #=> "h<e>llo"
 # "hello".sub(/./) {|s| s.ord.to_s + ' ' }     #=> "104 ello"
